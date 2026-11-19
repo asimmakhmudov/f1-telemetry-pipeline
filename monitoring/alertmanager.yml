@@ -1,0 +1,24 @@
+# Alerts show up at http://localhost:9093. To get notified, uncomment a channel
+# below and put its secret in monitoring/secrets/ (git-ignored).
+route:
+  receiver: data-team
+  group_by: [alertname, table]
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 4h
+
+receivers:
+  - name: data-team
+    # slack_configs:
+    #   - api_url_file: /etc/alertmanager/secrets/slack_webhook_url
+    #     channel: "#data-alerts"
+    #     send_resolved: true
+    # msteams_configs:
+    #   - webhook_url_file: /etc/alertmanager/secrets/teams_webhook_url
+    #     send_resolved: true
+    # email_configs:
+    #   - to: data-team@example.com
+    #     from: alertmanager@example.com
+    #     smarthost: smtp.example.com:587
+    #     auth_username: alertmanager@example.com
+    #     auth_password_file: /etc/alertmanager/secrets/smtp_password

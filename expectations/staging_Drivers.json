@@ -1,0 +1,74 @@
+{
+  "expectation_suite_name": "staging_Drivers",
+  "data_asset_type": null,
+  "meta": {
+    "great_expectations_version": "0.18.19"
+  },
+  "expectations": [
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "SessionKey"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "DriverNumber"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "LoadTimestamp"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "SessionKey",
+        "min_value": 200001011,
+        "max_value": 209912319
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "DriverNumber",
+        "min_value": 1,
+        "max_value": 99
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_value_lengths_to_equal",
+      "kwargs": {
+        "column": "NameAcronym",
+        "value": 3
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_match_regex",
+      "kwargs": {
+        "column": "TeamColour",
+        "regex": "^[0-9A-Fa-f]{6}$"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_compound_columns_to_be_unique",
+      "kwargs": {
+        "column_list": [
+          "SessionKey",
+          "DriverNumber"
+        ]
+      },
+      "meta": {}
+    }
+  ]
+}

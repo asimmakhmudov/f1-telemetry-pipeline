@@ -1,0 +1,175 @@
+{
+  "expectation_suite_name": "staging_Weather",
+  "data_asset_type": null,
+  "meta": {
+    "great_expectations_version": "0.18.19"
+  },
+  "expectations": [
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "SessionKey"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "SampleTime"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "LoadTimestamp"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "AirTemperature",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "TrackTemperature",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "Humidity",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "Pressure",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "WindDirection",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "WindSpeed",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "SessionKey",
+        "min_value": 200001011,
+        "max_value": 209912319
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "AirTemperature",
+        "min_value": -10,
+        "max_value": 50
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "TrackTemperature",
+        "min_value": -10,
+        "max_value": 70
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "Humidity",
+        "min_value": 0,
+        "max_value": 100
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "Pressure",
+        "min_value": 900,
+        "max_value": 1100
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "WindDirection",
+        "min_value": 0,
+        "max_value": 359
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "WindSpeed",
+        "min_value": 0,
+        "max_value": 30
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_compound_columns_to_be_unique",
+      "kwargs": {
+        "column_list": [
+          "SessionKey",
+          "SampleTime"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_pair_values_a_to_be_greater_than_b",
+      "kwargs": {
+        "column_A": "TrackTemperature",
+        "column_B": "AirTemperature",
+        "or_equal": true,
+        "ignore_row_if": "either_value_is_missing"
+      },
+      "meta": {
+        "notes": "Asphalt is never cooler than the air above it."
+      }
+    }
+  ]
+}

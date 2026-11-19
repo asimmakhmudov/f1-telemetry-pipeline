@@ -1,0 +1,35 @@
+slice_name: Race pit stops
+description: null
+certified_by: null
+certification_details: null
+viz_type: big_number_total
+params:
+  viz_type: big_number_total
+  metric:
+    expressionType: SQL
+    sqlExpression: SUM("PitStops")
+    label: Pit stops
+    hasCustomLabel: true
+  adhoc_filters:
+  - expressionType: SQL
+    sqlExpression: '"SessionName" = ''Race'''
+    clause: WHERE
+  y_axis_format: ',d'
+  subheader: "STOPS \xB7 RACES"
+  header_font_size: 0.4
+  subheader_font_size: 0.125
+  time_range: No filter
+  datasource: 1__table
+query_context: '{"datasource": {"id": 1, "type": "table"}, "force": false, "queries":
+  [{"metrics": [{"expressionType": "SQL", "sqlExpression": "SUM(\"PitStops\")", "label":
+  "Pit stops", "hasCustomLabel": true}], "extras": {"where": "(\"SessionName\" = ''Race'')"}}],
+  "form_data": {"viz_type": "big_number_total", "metric": {"expressionType": "SQL",
+  "sqlExpression": "SUM(\"PitStops\")", "label": "Pit stops", "hasCustomLabel": true},
+  "adhoc_filters": [{"expressionType": "SQL", "sqlExpression": "\"SessionName\" =
+  ''Race''", "clause": "WHERE"}], "y_axis_format": ",d", "subheader": "STOPS \u00b7
+  RACES", "header_font_size": 0.4, "subheader_font_size": 0.125, "time_range": "No
+  filter", "datasource": "1__table"}, "result_format": "json", "result_type": "full"}'
+cache_timeout: null
+uuid: 0015a2b9-e701-4bf0-9120-cdd7994c69e7
+version: 1.0.0
+dataset_uuid: f2a79bd6-aaed-4c86-a0d2-0f1bf63be8a5

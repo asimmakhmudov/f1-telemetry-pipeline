@@ -1,0 +1,30 @@
+[project]
+name = "f1-telemetry-elt"
+version = "0.1.0"
+description = "Batch ELT for F1 telemetry: PostgreSQL -> S3 lake -> Spark -> DuckDB with a Great Expectations gate"
+requires-python = ">=3.11"
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+extend-exclude = "^/internal/"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["internal"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "BLE", "E722"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "integration: needs the docker compose services running",
+    "spark: needs pyspark and a Java runtime",
+]
+addopts = "-ra"
+
+[tool.ruff.lint.per-file-ignores]
+# The dashboard CSS and slide text are long string literals; wrapping them hurts more than it helps.
+"bi/build_dashboard.py" = ["E501"]

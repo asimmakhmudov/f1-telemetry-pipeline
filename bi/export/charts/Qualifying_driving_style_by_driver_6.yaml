@@ -1,0 +1,63 @@
+slice_name: "Qualifying \xB7 driving style by driver"
+description: null
+certified_by: null
+certification_details: null
+viz_type: echarts_timeseries_bar
+params:
+  viz_type: echarts_timeseries_bar
+  x_axis: NameAcronym
+  metrics:
+  - expressionType: SQL
+    sqlExpression: AVG("FullThrottlePct")
+    label: Full throttle %
+    hasCustomLabel: true
+  - expressionType: SQL
+    sqlExpression: AVG("BrakingPct")
+    label: Braking %
+    hasCustomLabel: true
+  groupby: []
+  adhoc_filters:
+  - expressionType: SQL
+    sqlExpression: '"SessionName" = ''Qualifying'''
+    clause: WHERE
+  - expressionType: SQL
+    sqlExpression: '"IsPitOutLap" IS NOT TRUE'
+    clause: WHERE
+  row_limit: 1000
+  orientation: vertical
+  y_axis_format: .1f
+  show_value: false
+  xAxisLabelRotation: 45
+  show_legend: true
+  legendOrientation: top
+  rich_tooltip: true
+  truncateYAxis: false
+  y_axis_showminmax: false
+  time_range: No filter
+  color_scheme: f1Teams
+  zoomable: false
+  x_axis_sort: Full throttle %
+  x_axis_sort_asc: false
+  datasource: 3__table
+query_context: '{"datasource": {"id": 3, "type": "table"}, "force": false, "queries":
+  [{"columns": ["NameAcronym"], "metrics": [{"expressionType": "SQL", "sqlExpression":
+  "AVG(\"FullThrottlePct\")", "label": "Full throttle %", "hasCustomLabel": true},
+  {"expressionType": "SQL", "sqlExpression": "AVG(\"BrakingPct\")", "label": "Braking
+  %", "hasCustomLabel": true}], "extras": {"where": "(\"SessionName\" = ''Qualifying'')
+  AND (\"IsPitOutLap\" IS NOT TRUE)"}, "row_limit": 1000}], "form_data": {"viz_type":
+  "echarts_timeseries_bar", "x_axis": "NameAcronym", "metrics": [{"expressionType":
+  "SQL", "sqlExpression": "AVG(\"FullThrottlePct\")", "label": "Full throttle %",
+  "hasCustomLabel": true}, {"expressionType": "SQL", "sqlExpression": "AVG(\"BrakingPct\")",
+  "label": "Braking %", "hasCustomLabel": true}], "groupby": [], "adhoc_filters":
+  [{"expressionType": "SQL", "sqlExpression": "\"SessionName\" = ''Qualifying''",
+  "clause": "WHERE"}, {"expressionType": "SQL", "sqlExpression": "\"IsPitOutLap\"
+  IS NOT TRUE", "clause": "WHERE"}], "row_limit": 1000, "orientation": "vertical",
+  "y_axis_format": ".1f", "show_value": false, "xAxisLabelRotation": 45, "show_legend":
+  true, "legendOrientation": "top", "rich_tooltip": true, "truncateYAxis": false,
+  "y_axis_showminmax": false, "time_range": "No filter", "color_scheme": "f1Teams",
+  "zoomable": false, "x_axis_sort": "Full throttle %", "x_axis_sort_asc": false, "datasource":
+  "3__table"}, "result_format": "json", "result_type": "full"}'
+cache_timeout: null
+uuid: 580d5f6f-e7d7-4fc5-b297-2bdd9ef2ccad
+version: 1.0.0
+dataset_uuid: c2076647-1119-4ea2-b343-64231c81cdc5

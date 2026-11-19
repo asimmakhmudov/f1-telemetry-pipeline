@@ -1,0 +1,25 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  - /etc/prometheus/alerts.yml
+
+# Firing alerts are handed to Alertmanager, which groups and routes them.
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: ["alertmanager:9093"]
+
+scrape_configs:
+  # Airflow's own metrics, translated from StatsD.
+  - job_name: airflow
+    static_configs:
+      - targets: ["statsd-exporter:9102"]
+
+  # Pipeline metrics pushed by tasks/metrics.py. honor_labels keeps the pushed
+  # job/table labels instead of overwriting them with the scrape job's.
+  - job_name: pipeline
+    honor_labels: true
+    static_configs:
+      - targets: ["pushgateway:9091"]

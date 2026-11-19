@@ -1,0 +1,54 @@
+slice_name: "Race \xB7 tyre degradation by compound"
+description: null
+certified_by: null
+certification_details: null
+viz_type: echarts_timeseries_bar
+params:
+  viz_type: echarts_timeseries_bar
+  x_axis: Compound
+  metrics:
+  - expressionType: SQL
+    sqlExpression: AVG("DegradationPerLap")
+    label: Seconds lost per lap
+    hasCustomLabel: true
+  groupby:
+  - label: Tyre
+    sqlExpression: '"Compound"'
+    expressionType: SQL
+  adhoc_filters:
+  - expressionType: SQL
+    sqlExpression: '"SessionName" = ''Race'''
+    clause: WHERE
+  row_limit: 1000
+  orientation: vertical
+  y_axis_format: .3f
+  show_value: true
+  xAxisLabelRotation: 0
+  show_legend: false
+  legendOrientation: top
+  rich_tooltip: true
+  truncateYAxis: false
+  y_axis_showminmax: false
+  time_range: No filter
+  color_scheme: f1Teams
+  zoomable: false
+  stack: Stack
+  datasource: 5__table
+query_context: '{"datasource": {"id": 5, "type": "table"}, "force": false, "queries":
+  [{"columns": ["Compound", {"label": "Tyre", "sqlExpression": "\"Compound\"", "expressionType":
+  "SQL"}], "metrics": [{"expressionType": "SQL", "sqlExpression": "AVG(\"DegradationPerLap\")",
+  "label": "Seconds lost per lap", "hasCustomLabel": true}], "extras": {"where": "(\"SessionName\"
+  = ''Race'')"}, "row_limit": 1000}], "form_data": {"viz_type": "echarts_timeseries_bar",
+  "x_axis": "Compound", "metrics": [{"expressionType": "SQL", "sqlExpression": "AVG(\"DegradationPerLap\")",
+  "label": "Seconds lost per lap", "hasCustomLabel": true}], "groupby": [{"label":
+  "Tyre", "sqlExpression": "\"Compound\"", "expressionType": "SQL"}], "adhoc_filters":
+  [{"expressionType": "SQL", "sqlExpression": "\"SessionName\" = ''Race''", "clause":
+  "WHERE"}], "row_limit": 1000, "orientation": "vertical", "y_axis_format": ".3f",
+  "show_value": true, "xAxisLabelRotation": 0, "show_legend": false, "legendOrientation":
+  "top", "rich_tooltip": true, "truncateYAxis": false, "y_axis_showminmax": false,
+  "time_range": "No filter", "color_scheme": "f1Teams", "zoomable": false, "stack":
+  "Stack", "datasource": "5__table"}, "result_format": "json", "result_type": "full"}'
+cache_timeout: null
+uuid: 06681c66-7a69-43ed-910c-f3f2081213f9
+version: 1.0.0
+dataset_uuid: ee6a3b05-09a0-4c57-b78b-9ad09e2c90d9

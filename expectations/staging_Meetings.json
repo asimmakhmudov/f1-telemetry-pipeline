@@ -1,0 +1,102 @@
+{
+  "expectation_suite_name": "staging_Meetings",
+  "data_asset_type": null,
+  "meta": {
+    "great_expectations_version": "0.18.19"
+  },
+  "expectations": [
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "MeetingKey"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "LoadTimestamp"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "Year",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "CircuitLengthKm",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "MeetingKey",
+        "min_value": 20000101,
+        "max_value": 20991231
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "Year",
+        "min_value": 2000,
+        "max_value": 2099
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "CircuitLengthKm",
+        "min_value": 2,
+        "max_value": 8
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "CircuitType",
+        "value_set": [
+          "Permanent",
+          "Temporary - Street",
+          "Temporary - Road",
+          "Unknown"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_unique",
+      "kwargs": {
+        "column": "MeetingKey"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_compound_columns_to_be_unique",
+      "kwargs": {
+        "column_list": [
+          "CircuitShortName",
+          "DateStart"
+        ]
+      },
+      "meta": {
+        "notes": "Two meetings cannot share a circuit and a start date."
+      }
+    }
+  ]
+}

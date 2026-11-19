@@ -1,0 +1,62 @@
+slice_name: "Race classification \xB7 pace and pit work"
+description: null
+certified_by: null
+certification_details: null
+viz_type: table
+params:
+  viz_type: table
+  query_mode: raw
+  all_columns:
+  - MeetingName
+  - NameAcronym
+  - TeamName
+  - BestLap
+  - AvgLap
+  - TopSpeed
+  - PitStops
+  - TotalPitLaneTime
+  - DistanceKm
+  order_by_cols:
+  - '["MeetingName", true]'
+  - '["BestLap", true]'
+  adhoc_filters:
+  - expressionType: SQL
+    sqlExpression: '"SessionName" = ''Race'''
+    clause: WHERE
+  row_limit: 1000
+  server_page_length: 0
+  page_length: 25
+  include_search: true
+  show_cell_bars: false
+  table_timestamp_format: '%d %b %Y'
+  column_config:
+    BestLap:
+      d3NumberFormat: .3f
+    AvgLap:
+      d3NumberFormat: .3f
+    TopSpeed:
+      d3NumberFormat: ',d'
+    TotalPitLaneTime:
+      d3NumberFormat: .1f
+    DistanceKm:
+      d3NumberFormat: .1f
+  time_range: No filter
+  datasource: 1__table
+query_context: '{"datasource": {"id": 1, "type": "table"}, "force": false, "queries":
+  [{"columns": ["MeetingName", "NameAcronym", "TeamName", "BestLap", "AvgLap", "TopSpeed",
+  "PitStops", "TotalPitLaneTime", "DistanceKm"], "orderby": [["MeetingName", true],
+  ["BestLap", true]], "extras": {"where": "(\"SessionName\" = ''Race'')"}, "row_limit":
+  1000}], "form_data": {"viz_type": "table", "query_mode": "raw", "all_columns": ["MeetingName",
+  "NameAcronym", "TeamName", "BestLap", "AvgLap", "TopSpeed", "PitStops", "TotalPitLaneTime",
+  "DistanceKm"], "order_by_cols": ["[\"MeetingName\", true]", "[\"BestLap\", true]"],
+  "adhoc_filters": [{"expressionType": "SQL", "sqlExpression": "\"SessionName\" =
+  ''Race''", "clause": "WHERE"}], "row_limit": 1000, "server_page_length": 0, "page_length":
+  25, "include_search": true, "show_cell_bars": false, "table_timestamp_format": "%d
+  %b %Y", "column_config": {"BestLap": {"d3NumberFormat": ".3f"}, "AvgLap": {"d3NumberFormat":
+  ".3f"}, "TopSpeed": {"d3NumberFormat": ",d"}, "TotalPitLaneTime": {"d3NumberFormat":
+  ".1f"}, "DistanceKm": {"d3NumberFormat": ".1f"}}, "time_range": "No filter", "datasource":
+  "1__table"}, "result_format": "json", "result_type": "full"}'
+cache_timeout: null
+uuid: 970ac3a2-bb5b-441c-a65e-8c89db97772b
+version: 1.0.0
+dataset_uuid: f2a79bd6-aaed-4c86-a0d2-0f1bf63be8a5

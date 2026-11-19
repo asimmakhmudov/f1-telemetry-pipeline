@@ -1,0 +1,52 @@
+slice_name: "Qualifying \xB7 gap to the fastest team"
+description: null
+certified_by: null
+certification_details: null
+viz_type: echarts_timeseries_bar
+params:
+  viz_type: echarts_timeseries_bar
+  x_axis: TeamName
+  metrics:
+  - expressionType: SQL
+    sqlExpression: AVG("GapToFastest")
+    label: Gap to fastest (s)
+    hasCustomLabel: true
+  groupby: []
+  adhoc_filters:
+  - expressionType: SQL
+    sqlExpression: '"SessionName" = ''Qualifying'''
+    clause: WHERE
+  row_limit: 1000
+  orientation: horizontal
+  y_axis_format: .3f
+  show_value: true
+  xAxisLabelRotation: 0
+  show_legend: false
+  legendOrientation: top
+  rich_tooltip: true
+  truncateYAxis: false
+  y_axis_showminmax: false
+  time_range: No filter
+  color_scheme: f1Teams
+  zoomable: false
+  x_axis_sort: Gap to fastest (s)
+  x_axis_sort_asc: false
+  datasource: 2__table
+query_context: '{"datasource": {"id": 2, "type": "table"}, "force": false, "queries":
+  [{"columns": ["TeamName"], "metrics": [{"expressionType": "SQL", "sqlExpression":
+  "AVG(\"GapToFastest\")", "label": "Gap to fastest (s)", "hasCustomLabel": true}],
+  "extras": {"where": "(\"SessionName\" = ''Qualifying'')"}, "row_limit": 1000}],
+  "form_data": {"viz_type": "echarts_timeseries_bar", "x_axis": "TeamName", "metrics":
+  [{"expressionType": "SQL", "sqlExpression": "AVG(\"GapToFastest\")", "label": "Gap
+  to fastest (s)", "hasCustomLabel": true}], "groupby": [], "adhoc_filters": [{"expressionType":
+  "SQL", "sqlExpression": "\"SessionName\" = ''Qualifying''", "clause": "WHERE"}],
+  "row_limit": 1000, "orientation": "horizontal", "y_axis_format": ".3f", "show_value":
+  true, "xAxisLabelRotation": 0, "show_legend": false, "legendOrientation": "top",
+  "rich_tooltip": true, "truncateYAxis": false, "y_axis_showminmax": false, "time_range":
+  "No filter", "color_scheme": "f1Teams", "zoomable": false, "x_axis_sort": "Gap to
+  fastest (s)", "x_axis_sort_asc": false, "datasource": "2__table"}, "result_format":
+  "json", "result_type": "full"}'
+cache_timeout: null
+uuid: fa8360c4-ffce-40a4-927e-3aeac656bd0a
+version: 1.0.0
+dataset_uuid: 7eb95cf1-6888-474d-a07e-f1217d923ff5

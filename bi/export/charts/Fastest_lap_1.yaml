@@ -1,0 +1,31 @@
+slice_name: Fastest lap
+description: null
+certified_by: null
+certification_details: null
+viz_type: big_number_total
+params:
+  viz_type: big_number_total
+  metric:
+    expressionType: SQL
+    sqlExpression: MIN("BestLap")
+    label: Fastest lap (s)
+    hasCustomLabel: true
+  adhoc_filters: []
+  y_axis_format: .3f
+  subheader: "SECONDS \xB7 ALL SESSIONS"
+  header_font_size: 0.4
+  subheader_font_size: 0.125
+  time_range: No filter
+  datasource: 1__table
+query_context: '{"datasource": {"id": 1, "type": "table"}, "force": false, "queries":
+  [{"metrics": [{"expressionType": "SQL", "sqlExpression": "MIN(\"BestLap\")", "label":
+  "Fastest lap (s)", "hasCustomLabel": true}], "extras": {}}], "form_data": {"viz_type":
+  "big_number_total", "metric": {"expressionType": "SQL", "sqlExpression": "MIN(\"BestLap\")",
+  "label": "Fastest lap (s)", "hasCustomLabel": true}, "adhoc_filters": [], "y_axis_format":
+  ".3f", "subheader": "SECONDS \u00b7 ALL SESSIONS", "header_font_size": 0.4, "subheader_font_size":
+  0.125, "time_range": "No filter", "datasource": "1__table"}, "result_format": "json",
+  "result_type": "full"}'
+cache_timeout: null
+uuid: 06dbfe08-6f4f-4cad-8ec0-bbe54d097287
+version: 1.0.0
+dataset_uuid: f2a79bd6-aaed-4c86-a0d2-0f1bf63be8a5

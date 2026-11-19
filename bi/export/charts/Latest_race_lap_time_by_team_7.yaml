@@ -1,0 +1,57 @@
+slice_name: "Latest race \xB7 lap time by team"
+description: null
+certified_by: null
+certification_details: null
+viz_type: echarts_timeseries_line
+params:
+  viz_type: echarts_timeseries_line
+  x_axis: LapNumber
+  metrics:
+  - expressionType: SQL
+    sqlExpression: AVG("LapDuration")
+    label: Lap time (s)
+    hasCustomLabel: true
+  groupby:
+  - TeamName
+  adhoc_filters:
+  - expressionType: SQL
+    sqlExpression: '"IsPitOutLap" IS NOT TRUE'
+    clause: WHERE
+  - expressionType: SQL
+    sqlExpression: '"LapNumber" > 1'
+    clause: WHERE
+  row_limit: 10000
+  series_limit: 0
+  y_axis_format: .2f
+  truncateYAxis: true
+  show_legend: true
+  legendOrientation: right
+  legendType: scroll
+  rich_tooltip: true
+  tooltipSortByMetric: true
+  markerEnabled: false
+  time_range: No filter
+  color_scheme: f1Teams
+  x_axis_title: Lap
+  x_axis_title_margin: 15
+  zoomable: true
+  datasource: 4__table
+query_context: '{"datasource": {"id": 4, "type": "table"}, "force": false, "queries":
+  [{"columns": ["LapNumber", "TeamName"], "metrics": [{"expressionType": "SQL", "sqlExpression":
+  "AVG(\"LapDuration\")", "label": "Lap time (s)", "hasCustomLabel": true}], "extras":
+  {"where": "(\"IsPitOutLap\" IS NOT TRUE) AND (\"LapNumber\" > 1)"}, "row_limit":
+  10000}], "form_data": {"viz_type": "echarts_timeseries_line", "x_axis": "LapNumber",
+  "metrics": [{"expressionType": "SQL", "sqlExpression": "AVG(\"LapDuration\")", "label":
+  "Lap time (s)", "hasCustomLabel": true}], "groupby": ["TeamName"], "adhoc_filters":
+  [{"expressionType": "SQL", "sqlExpression": "\"IsPitOutLap\" IS NOT TRUE", "clause":
+  "WHERE"}, {"expressionType": "SQL", "sqlExpression": "\"LapNumber\" > 1", "clause":
+  "WHERE"}], "row_limit": 10000, "series_limit": 0, "y_axis_format": ".2f", "truncateYAxis":
+  true, "show_legend": true, "legendOrientation": "right", "legendType": "scroll",
+  "rich_tooltip": true, "tooltipSortByMetric": true, "markerEnabled": false, "time_range":
+  "No filter", "color_scheme": "f1Teams", "x_axis_title": "Lap", "x_axis_title_margin":
+  15, "zoomable": true, "datasource": "4__table"}, "result_format": "json", "result_type":
+  "full"}'
+cache_timeout: null
+uuid: 5dd3bdba-5eb9-42f6-9c72-08f9a21121fc
+version: 1.0.0
+dataset_uuid: c031abb6-1248-45c1-831b-54016794afcb

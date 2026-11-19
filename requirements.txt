@@ -1,0 +1,15 @@
+# Used by the Airflow image, the local .venv and CI. Airflow comes from the base image.
+
+# Pipeline
+pyspark==3.5.1
+duckdb==1.5.5
+great_expectations==0.18.19
+psycopg2-binary>=2.9,<3
+# Below 17: Great Expectations 0.18 holds NumPy below 2, which newer pyarrow needs.
+pyarrow>=14,<17
+prometheus-client>=0.20,<1
+
+# Tests and linting
+pytest>=8,<9
+ruff>=0.5
+black>=24

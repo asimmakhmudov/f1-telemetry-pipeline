@@ -1,0 +1,51 @@
+slice_name: "Race \xB7 pit lane time by team"
+description: null
+certified_by: null
+certification_details: null
+viz_type: echarts_timeseries_bar
+params:
+  viz_type: echarts_timeseries_bar
+  x_axis: TeamName
+  metrics:
+  - expressionType: SQL
+    sqlExpression: AVG("TotalPitLaneTime")
+    label: Avg pit lane (s)
+    hasCustomLabel: true
+  groupby: []
+  adhoc_filters:
+  - expressionType: SQL
+    sqlExpression: '"SessionName" = ''Race'''
+    clause: WHERE
+  row_limit: 1000
+  orientation: horizontal
+  y_axis_format: .1f
+  show_value: true
+  xAxisLabelRotation: 0
+  show_legend: false
+  legendOrientation: top
+  rich_tooltip: true
+  truncateYAxis: false
+  y_axis_showminmax: false
+  time_range: No filter
+  color_scheme: f1Teams
+  zoomable: false
+  x_axis_sort: Avg pit lane (s)
+  x_axis_sort_asc: false
+  datasource: 1__table
+query_context: '{"datasource": {"id": 1, "type": "table"}, "force": false, "queries":
+  [{"columns": ["TeamName"], "metrics": [{"expressionType": "SQL", "sqlExpression":
+  "AVG(\"TotalPitLaneTime\")", "label": "Avg pit lane (s)", "hasCustomLabel": true}],
+  "extras": {"where": "(\"SessionName\" = ''Race'')"}, "row_limit": 1000}], "form_data":
+  {"viz_type": "echarts_timeseries_bar", "x_axis": "TeamName", "metrics": [{"expressionType":
+  "SQL", "sqlExpression": "AVG(\"TotalPitLaneTime\")", "label": "Avg pit lane (s)",
+  "hasCustomLabel": true}], "groupby": [], "adhoc_filters": [{"expressionType": "SQL",
+  "sqlExpression": "\"SessionName\" = ''Race''", "clause": "WHERE"}], "row_limit":
+  1000, "orientation": "horizontal", "y_axis_format": ".1f", "show_value": true, "xAxisLabelRotation":
+  0, "show_legend": false, "legendOrientation": "top", "rich_tooltip": true, "truncateYAxis":
+  false, "y_axis_showminmax": false, "time_range": "No filter", "color_scheme": "f1Teams",
+  "zoomable": false, "x_axis_sort": "Avg pit lane (s)", "x_axis_sort_asc": false,
+  "datasource": "1__table"}, "result_format": "json", "result_type": "full"}'
+cache_timeout: null
+uuid: 9092a246-5705-46d3-9aa6-c162dd981f8d
+version: 1.0.0
+dataset_uuid: f2a79bd6-aaed-4c86-a0d2-0f1bf63be8a5

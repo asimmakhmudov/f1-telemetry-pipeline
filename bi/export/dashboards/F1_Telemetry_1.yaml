@@ -1,0 +1,758 @@
+dashboard_title: F1 Telemetry
+description: null
+css: "@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700;900&display=swap');\n\
+  \n:root { --f1-red: #E10600; --f1-carbon: #15151E; --f1-carbon-2: #1F1F2B; --f1-line:\
+  \ #38383F; }\n\nbody, .dashboard, .dashboard * { font-family: 'Titillium Web', 'Inter',\
+  \ Helvetica, Arial, sans-serif !important; }\n\n/* Page */\nbody, #app, .dashboard,\
+  \ .dashboard-content, .grid-container, .dashboard-content > div {\n  background-color:\
+  \ var(--f1-carbon) !important;\n}\n.grid-container { padding-top: 8px; }\n\n/* Title\
+  \ bar */\n[data-test=\"dashboard-header-container\"], .header-with-actions {\n \
+  \ background: var(--f1-carbon) !important;\n  border-bottom: 3px solid var(--f1-red)\
+  \ !important;\n}\n[data-test=\"editable-title\"], [data-test=\"editable-title\"\
+  ] input, .header-with-actions .title-panel {\n  color: #FFFFFF !important; font-weight:\
+  \ 900 !important; letter-spacing: .04em; text-transform: uppercase;\n}\n.header-with-actions\
+  \ .anticon, .header-with-actions .metadata-bar, .header-with-actions .metadata-bar\
+  \ * {\n  color: #A9A9B3 !important;\n}\n\n/* Chart cards */\n.dashboard-component-chart-holder\
+  \ {\n  background: #FFFFFF !important;\n  border-radius: 4px !important;\n  border-top:\
+  \ 3px solid var(--f1-red) !important;\n  box-shadow: 0 2px 10px rgba(0, 0, 0, .35)\
+  \ !important;\n}\n.dashboard-component-chart-holder .header-title, .dashboard-component-chart-holder\
+  \ .header-title * {\n  font-weight: 700 !important; font-size: 14px !important;\
+  \ letter-spacing: .05em;\n  text-transform: uppercase; color: var(--f1-carbon) !important;\n\
+  }\n\n/* KPI tiles */\n.superset-legacy-chart-big-number .header-line {\n  font-weight:\
+  \ 900 !important; color: var(--f1-carbon) !important; font-variant-numeric: tabular-nums;\n\
+  }\n.superset-legacy-chart-big-number .subheader-line {\n  color: #6B6B76 !important;\
+  \ letter-spacing: .08em; font-weight: 600 !important;\n}\n\n/* Tables: carbon header\
+  \ row, tabular figures, quiet zebra stripes */\n.dashboard-component-chart-holder\
+  \ table thead th {\n  background: var(--f1-carbon) !important; color: #FFFFFF !important;\n\
+  \  text-transform: uppercase; font-size: 12px; letter-spacing: .06em; border-bottom:\
+  \ 2px solid var(--f1-red) !important;\n}\n.dashboard-component-chart-holder table\
+  \ thead th svg { color: #FFFFFF !important; }\n.dashboard-component-chart-holder\
+  \ table tbody td { font-variant-numeric: tabular-nums; }\n.dashboard-component-chart-holder\
+  \ table tbody tr:nth-child(even) td { background: #F6F6F8; }\n.dashboard-component-chart-holder\
+  \ table tbody tr:hover td { background: #FDECEC !important; }\n\n/* Markdown blocks\
+  \ are layout, not cards */\n.dashboard-markdown .dashboard-component-chart-holder\
+  \ {\n  background: transparent !important; border-top: none !important; box-shadow:\
+  \ none !important;\n}\n.dashboard-markdown, .dashboard-markdown .safe-markdown {\
+  \ background: transparent !important; }\n\n/* Report banner (the markdown block\
+  \ with an h1) */\n.dashboard-markdown .dashboard-component-chart-holder:has(h1)\
+  \ {\n  background:\n    linear-gradient(115deg, transparent 0 72%, var(--f1-red)\
+  \ 72% 73.2%, transparent 73.2% 75%,\n                    var(--f1-red) 75% 75.6%,\
+  \ transparent 75.6%),\n    linear-gradient(90deg, #1F1F2B 0%, #15151E 100%) !important;\n\
+  \  border-left: 6px solid var(--f1-red) !important;\n  border-radius: 4px !important;\n\
+  }\n.dashboard-markdown h1 {\n  color: #FFFFFF !important; font-weight: 900 !important;\
+  \ font-size: 34px !important;\n  letter-spacing: .03em; text-transform: uppercase;\
+  \ margin: 6px 0 2px !important;\n}\n.dashboard-markdown h1 + p { color: #C9C9D1\
+  \ !important; font-size: 15px; margin: 0 !important; }\n.dashboard-markdown p strong\
+  \ { color: var(--f1-red) !important; font-weight: 700; }\n\n/* Section headings\
+  \ (the markdown blocks with an h3) */\n.dashboard-markdown h3 {\n  color: #FFFFFF\
+  \ !important; font-weight: 700 !important; font-size: 18px !important;\n  text-transform:\
+  \ uppercase; letter-spacing: .08em; margin: 10px 0 0 !important;\n  padding-left:\
+  \ 12px; border-left: 4px solid var(--f1-red);\n}\n.dashboard-markdown h3 em { color:\
+  \ var(--f1-red); font-style: normal; margin-right: 6px; }\n.dashboard-markdown h3\
+  \ + p { color: #8E8E99 !important; font-size: 13px; margin: 2px 0 0 16px !important;\
+  \ }\n\n/* Pages: each tab is one 16:9 slide (PowerPoint widescreen, 1280 x 720 px)\
+  \ */\n/* Superset sizes chart columns from the container width, so the container\
+  \ is the slide's\n   inner width (1248) and the 1280 px frame reaches 16 px past\
+  \ it on each side. */\n.dashboard-content .grid-container {\n  width: 1248px !important;\
+  \ max-width: 1248px !important; margin: 12px auto 24px !important;\n}\n.dashboard-content\
+  \ .grid-container .ant-tabs-content-holder {\n  box-sizing: border-box; width: 1280px;\
+  \ height: 720px; overflow: hidden;\n  margin: 0 -16px; padding: 14px 16px 0;\n \
+  \ background: linear-gradient(180deg, #1F1F2B 0%, #15151E 100%) !important;\n  border:\
+  \ 1px solid var(--f1-line); border-top: 4px solid var(--f1-red);\n  box-shadow:\
+  \ 0 10px 40px rgba(0, 0, 0, .55);\n}\n.dashboard-content .grid-container .ant-tabs-content-holder\
+  \ .grid-content {\n  background: transparent !important; border: none !important;\
+  \ box-shadow: none !important;\n}\n\n/* Page buttons (the top-level tabs) */\n.dashboard-component-tabs\
+  \ .ant-tabs-nav { margin: 0 !important; background: var(--f1-carbon) !important;\
+  \ }\n.dashboard-component-tabs .ant-tabs-nav::before { border-bottom: none !important;\
+  \ }\n.dashboard-component-tabs .ant-tabs-tab {\n  background: var(--f1-carbon-2)\
+  \ !important; border: 1px solid var(--f1-line) !important;\n  border-radius: 4px\
+  \ 4px 0 0 !important; margin-right: 6px !important; padding: 8px 22px !important;\n\
+  \  transition: background .15s;\n}\n.dashboard-component-tabs .ant-tabs-tab:hover\
+  \ { background: #2A2A38 !important; }\n.dashboard-component-tabs .ant-tabs-tab,\
+  \ .dashboard-component-tabs .ant-tabs-tab * {\n  color: #A9A9B3 !important; font-weight:\
+  \ 700 !important; text-transform: uppercase; letter-spacing: .08em;\n}\n.dashboard-component-tabs\
+  \ .ant-tabs-tab-active { background: var(--f1-red) !important; border-color: var(--f1-red)\
+  \ !important; }\n.dashboard-component-tabs .ant-tabs-tab-active, .dashboard-component-tabs\
+  \ .ant-tabs-tab-active * { color: #FFFFFF !important; }\n.dashboard-component-tabs\
+  \ .ant-tabs-ink-bar { display: none !important; }\n\n/* Slide title (the markdown\
+  \ block with an h2) */\n.dashboard-markdown .dashboard-component-chart-holder:has(h2)\
+  \ {\n  background:\n    linear-gradient(115deg, transparent 0 80%, var(--f1-red)\
+  \ 80% 81%, transparent 81% 82.5%,\n                    var(--f1-red) 82.5% 83%,\
+  \ transparent 83%) !important;\n}\n.dashboard-markdown h2 {\n  color: #FFFFFF !important;\
+  \ font-weight: 900 !important; font-size: 26px !important;\n  text-transform: uppercase;\
+  \ letter-spacing: .04em; margin: 0 !important; line-height: 1.15;\n}\n.dashboard-markdown\
+  \ h2 em { color: var(--f1-red); font-style: normal; margin-right: 10px; }\n.dashboard-markdown\
+  \ h2 + p { color: #A9A9B3 !important; font-size: 13px; margin: 2px 0 0 !important;\
+  \ }\n\n/* Horizontal filter bar */\n[data-test=\"filter-bar\"], .filter-bar-horizontal,\
+  \ [data-test=\"horizontal-filterbar\"] {\n  background: var(--f1-carbon) !important;\
+  \ border-bottom: 1px solid var(--f1-line) !important;\n}\n.ant-form-item-label h4\
+  \ {\n  color: #E6E6EB !important; font-weight: 600 !important; text-transform: uppercase;\
+  \ letter-spacing: .06em;\n}"
+slug: f1-telemetry
+certified_by: null
+certification_details: null
+published: true
+uuid: ef04dd56-ef7c-4750-abe7-3b834efd5edc
+position:
+  DASHBOARD_VERSION_KEY: v2
+  ROOT_ID:
+    type: ROOT
+    id: ROOT_ID
+    children:
+    - TABS-pages
+  TABS-pages:
+    type: TABS
+    id: TABS-pages
+    children:
+    - TAB-page1
+    - TAB-page2
+    - TAB-page3
+    parents:
+    - ROOT_ID
+    meta: {}
+  HEADER_ID:
+    id: HEADER_ID
+    type: HEADER
+    meta:
+      text: F1 Telemetry
+  TAB-page1:
+    type: TAB
+    id: TAB-page1
+    children:
+    - ROW-1-1
+    - ROW-1-2
+    - ROW-1-3
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    meta:
+      text: "01 \xB7 Overview"
+      defaultText: Page
+      placeholder: Page
+  ROW-1-1:
+    type: ROW
+    id: ROW-1-1
+    children:
+    - MARKDOWN-1-1-1
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page1
+    meta:
+      background: BACKGROUND_TRANSPARENT
+  MARKDOWN-1-1-1:
+    type: MARKDOWN
+    id: MARKDOWN-1-1-1
+    children: []
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page1
+    - ROW-1-1
+    meta:
+      width: 12
+      height: 8
+      code: '## *01* Weekend at a glance
+
+
+        Headline numbers, qualifying deficit and tyre wear across the sessions selected.'
+  ROW-1-2:
+    type: ROW
+    id: ROW-1-2
+    children:
+    - CHART-1
+    - CHART-2
+    - CHART-3
+    - CHART-4
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page1
+    meta:
+      background: BACKGROUND_TRANSPARENT
+  CHART-1:
+    type: CHART
+    id: CHART-1
+    children: []
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page1
+    - ROW-1-2
+    meta:
+      width: 3
+      height: 17
+      chartId: 1
+      sliceName: Fastest lap
+  CHART-2:
+    type: CHART
+    id: CHART-2
+    children: []
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page1
+    - ROW-1-2
+    meta:
+      width: 3
+      height: 17
+      chartId: 2
+      sliceName: Top speed
+  CHART-3:
+    type: CHART
+    id: CHART-3
+    children: []
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page1
+    - ROW-1-2
+    meta:
+      width: 3
+      height: 17
+      chartId: 3
+      sliceName: Laps timed
+  CHART-4:
+    type: CHART
+    id: CHART-4
+    children: []
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page1
+    - ROW-1-2
+    meta:
+      width: 3
+      height: 17
+      chartId: 4
+      sliceName: Race pit stops
+  ROW-1-3:
+    type: ROW
+    id: ROW-1-3
+    children:
+    - CHART-5
+    - CHART-8
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page1
+    meta:
+      background: BACKGROUND_TRANSPARENT
+  CHART-5:
+    type: CHART
+    id: CHART-5
+    children: []
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page1
+    - ROW-1-3
+    meta:
+      width: 6
+      height: 57
+      chartId: 5
+      sliceName: "Qualifying \xB7 gap to the fastest team"
+  CHART-8:
+    type: CHART
+    id: CHART-8
+    children: []
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page1
+    - ROW-1-3
+    meta:
+      width: 6
+      height: 57
+      chartId: 8
+      sliceName: "Race \xB7 tyre degradation by compound"
+  TAB-page2:
+    type: TAB
+    id: TAB-page2
+    children:
+    - ROW-2-1
+    - ROW-2-2
+    - ROW-2-3
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    meta:
+      text: "02 \xB7 Pace"
+      defaultText: Page
+      placeholder: Page
+  ROW-2-1:
+    type: ROW
+    id: ROW-2-1
+    children:
+    - MARKDOWN-2-1-1
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page2
+    meta:
+      background: BACKGROUND_TRANSPARENT
+  MARKDOWN-2-1-1:
+    type: MARKDOWN
+    id: MARKDOWN-2-1-1
+    children: []
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page2
+    - ROW-2-1
+    meta:
+      width: 12
+      height: 8
+      code: '## *02* Pace & driving style
+
+
+        Race pace lap by lap, how drivers use throttle and brakes, and straight-line
+        speed.'
+  ROW-2-2:
+    type: ROW
+    id: ROW-2-2
+    children:
+    - CHART-7
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page2
+    meta:
+      background: BACKGROUND_TRANSPARENT
+  CHART-7:
+    type: CHART
+    id: CHART-7
+    children: []
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page2
+    - ROW-2-2
+    meta:
+      width: 12
+      height: 38
+      chartId: 7
+      sliceName: "Latest race \xB7 lap time by team"
+  ROW-2-3:
+    type: ROW
+    id: ROW-2-3
+    children:
+    - CHART-6
+    - CHART-10
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page2
+    meta:
+      background: BACKGROUND_TRANSPARENT
+  CHART-6:
+    type: CHART
+    id: CHART-6
+    children: []
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page2
+    - ROW-2-3
+    meta:
+      width: 8
+      height: 36
+      chartId: 6
+      sliceName: "Qualifying \xB7 driving style by driver"
+  CHART-10:
+    type: CHART
+    id: CHART-10
+    children: []
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page2
+    - ROW-2-3
+    meta:
+      width: 4
+      height: 36
+      chartId: 10
+      sliceName: Top speed by team
+  TAB-page3:
+    type: TAB
+    id: TAB-page3
+    children:
+    - ROW-3-1
+    - ROW-3-2
+    - ROW-3-3
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    meta:
+      text: "03 \xB7 Classification"
+      defaultText: Page
+      placeholder: Page
+  ROW-3-1:
+    type: ROW
+    id: ROW-3-1
+    children:
+    - MARKDOWN-3-1-1
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page3
+    meta:
+      background: BACKGROUND_TRANSPARENT
+  MARKDOWN-3-1-1:
+    type: MARKDOWN
+    id: MARKDOWN-3-1-1
+    children: []
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page3
+    - ROW-3-1
+    meta:
+      width: 12
+      height: 8
+      code: '## *03* Classification & conditions
+
+
+        Every driver''s race, pit crew speed and the track each session ran on.'
+  ROW-3-2:
+    type: ROW
+    id: ROW-3-2
+    children:
+    - CHART-9
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page3
+    meta:
+      background: BACKGROUND_TRANSPARENT
+  CHART-9:
+    type: CHART
+    id: CHART-9
+    children: []
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page3
+    - ROW-3-2
+    meta:
+      width: 12
+      height: 41
+      chartId: 9
+      sliceName: "Race classification \xB7 pace and pit work"
+  ROW-3-3:
+    type: ROW
+    id: ROW-3-3
+    children:
+    - CHART-12
+    - CHART-11
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page3
+    meta:
+      background: BACKGROUND_TRANSPARENT
+  CHART-12:
+    type: CHART
+    id: CHART-12
+    children: []
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page3
+    - ROW-3-3
+    meta:
+      width: 8
+      height: 33
+      chartId: 12
+      sliceName: Session conditions
+  CHART-11:
+    type: CHART
+    id: CHART-11
+    children: []
+    parents:
+    - ROOT_ID
+    - TABS-pages
+    - TAB-page3
+    - ROW-3-3
+    meta:
+      width: 4
+      height: 33
+      chartId: 11
+      sliceName: "Race \xB7 pit lane time by team"
+  CHART-SV4HK1AN:
+    children: []
+    id: CHART-SV4HK1AN
+    meta:
+      chartId: 9
+      height: 50
+      sliceName: "Race classification \xB7 pace and pit work"
+      uuid: 970ac3a2-bb5b-441c-a65e-8c89db97772b
+      width: 4
+    type: CHART
+  CHART-P9BQWDCN:
+    children: []
+    id: CHART-P9BQWDCN
+    meta:
+      chartId: 3
+      height: 50
+      sliceName: Laps timed
+      uuid: 55a1c82e-df9b-431c-9d0e-953ffc228caf
+      width: 4
+    type: CHART
+  CHART-LZBJMPBA:
+    children: []
+    id: CHART-LZBJMPBA
+    meta:
+      chartId: 8
+      height: 50
+      sliceName: "Race \xB7 tyre degradation by compound"
+      uuid: 06681c66-7a69-43ed-910c-f3f2081213f9
+      width: 4
+    type: CHART
+  CHART-35RK7U7E:
+    children: []
+    id: CHART-35RK7U7E
+    meta:
+      chartId: 12
+      height: 50
+      sliceName: Session conditions
+      uuid: cc8a0069-781c-4e00-a430-21eee8f2f424
+      width: 4
+    type: CHART
+  CHART-CVV4R0P4:
+    children: []
+    id: CHART-CVV4R0P4
+    meta:
+      chartId: 4
+      height: 50
+      sliceName: Race pit stops
+      uuid: 0015a2b9-e701-4bf0-9120-cdd7994c69e7
+      width: 4
+    type: CHART
+  CHART-BWTZJ5PY:
+    children: []
+    id: CHART-BWTZJ5PY
+    meta:
+      chartId: 2
+      height: 50
+      sliceName: Top speed
+      uuid: 6371c85c-e7bc-465f-858c-83893d0246d7
+      width: 4
+    type: CHART
+  CHART-6J0QTE61:
+    children: []
+    id: CHART-6J0QTE61
+    meta:
+      chartId: 7
+      height: 50
+      sliceName: "Latest race \xB7 lap time by team"
+      uuid: 5dd3bdba-5eb9-42f6-9c72-08f9a21121fc
+      width: 4
+    type: CHART
+  CHART-GOZLKTPO:
+    children: []
+    id: CHART-GOZLKTPO
+    meta:
+      chartId: 10
+      height: 50
+      sliceName: Top speed by team
+      uuid: fa673045-9d27-4309-99ec-06fb1d10ca23
+      width: 4
+    type: CHART
+  CHART-G53JV8QZ:
+    children: []
+    id: CHART-G53JV8QZ
+    meta:
+      chartId: 5
+      height: 50
+      sliceName: "Qualifying \xB7 gap to the fastest team"
+      uuid: fa8360c4-ffce-40a4-927e-3aeac656bd0a
+      width: 4
+    type: CHART
+  CHART-0XOOZI6W:
+    children: []
+    id: CHART-0XOOZI6W
+    meta:
+      chartId: 11
+      height: 50
+      sliceName: "Race \xB7 pit lane time by team"
+      uuid: 9092a246-5705-46d3-9aa6-c162dd981f8d
+      width: 4
+    type: CHART
+  CHART-0DWT7NKO:
+    children: []
+    id: CHART-0DWT7NKO
+    meta:
+      chartId: 6
+      height: 50
+      sliceName: "Qualifying \xB7 driving style by driver"
+      uuid: 580d5f6f-e7d7-4fc5-b297-2bdd9ef2ccad
+      width: 4
+    type: CHART
+  CHART-42PI3C5O:
+    children: []
+    id: CHART-42PI3C5O
+    meta:
+      chartId: 1
+      height: 50
+      sliceName: Fastest lap
+      uuid: 06dbfe08-6f4f-4cad-8ec0-bbe54d097287
+      width: 4
+    type: CHART
+metadata:
+  color_scheme: f1Teams
+  label_colors:
+    McLaren: '#F47600'
+    Ferrari: '#ED1131'
+    Red Bull Racing: '#4781D7'
+    Mercedes: '#00D7B6'
+    Aston Martin: '#229971'
+    Alpine: '#00A1E8'
+    Williams: '#1868DB'
+    Racing Bulls: '#6C98FF'
+    Haas F1 Team: '#9C9FA2'
+    Audi: '#F50537'
+    Cadillac: '#909090'
+    SOFT: '#DA291C'
+    MEDIUM: '#F2C200'
+    HARD: '#B9BCC2'
+    INTERMEDIATE: '#43B02A'
+    WET: '#0067AD'
+    Gap to fastest (s): '#E10600'
+    Full throttle %: '#15151E'
+    Braking %: '#E10600'
+    Top speed (km/h): '#15151E'
+    Avg pit lane (s): '#E10600'
+  shared_label_colors: {}
+  refresh_frequency: 0
+  timed_refresh_immune_slices: []
+  cross_filters_enabled: true
+  filter_bar_orientation: HORIZONTAL
+  native_filter_configuration:
+  - id: NATIVE_FILTER-grand-prix
+    name: Grand Prix
+    filterType: filter_select
+    type: NATIVE_FILTER
+    targets:
+    - column:
+        name: MeetingName
+      datasetUuid: 2f528e78-2355-47b4-9e0d-1923599642f3
+    controlValues:
+      enableEmptyFilter: false
+      defaultToFirstItem: false
+      multiSelect: true
+      searchAllOptions: false
+      inverseSelection: false
+    defaultDataMask:
+      extraFormData: {}
+      filterState: {}
+      ownState: {}
+    cascadeParentIds: []
+    scope:
+      rootPath:
+      - ROOT_ID
+      excluded:
+      - 7
+    chartsInScope:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    tabsInScope:
+    - TAB-page1
+    - TAB-page2
+    - TAB-page3
+    description: Limit the report to one or more race weekends
+  - id: NATIVE_FILTER-team
+    name: Team
+    filterType: filter_select
+    type: NATIVE_FILTER
+    targets:
+    - column:
+        name: TeamName
+      datasetUuid: f2a79bd6-aaed-4c86-a0d2-0f1bf63be8a5
+    controlValues:
+      enableEmptyFilter: false
+      defaultToFirstItem: false
+      multiSelect: true
+      searchAllOptions: false
+      inverseSelection: false
+    defaultDataMask:
+      extraFormData: {}
+      filterState: {}
+      ownState: {}
+    cascadeParentIds: []
+    scope:
+      rootPath:
+      - ROOT_ID
+      excluded:
+      - 12
+    chartsInScope:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    tabsInScope:
+    - TAB-page1
+    - TAB-page2
+    - TAB-page3
+    description: Show only these teams
+  - id: NATIVE_FILTER-driver
+    name: Driver
+    filterType: filter_select
+    type: NATIVE_FILTER
+    targets:
+    - column:
+        name: NameAcronym
+      datasetUuid: f2a79bd6-aaed-4c86-a0d2-0f1bf63be8a5
+    controlValues:
+      enableEmptyFilter: false
+      defaultToFirstItem: false
+      multiSelect: true
+      searchAllOptions: false
+      inverseSelection: false
+    defaultDataMask:
+      extraFormData: {}
+      filterState: {}
+      ownState: {}
+    cascadeParentIds:
+    - NATIVE_FILTER-team
+    scope:
+      rootPath:
+      - ROOT_ID
+      excluded:
+      - 12
+      - 5
+      - 10
+      - 11
+    chartsInScope:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 6
+    - 7
+    - 8
+    - 9
+    tabsInScope:
+    - TAB-page1
+    - TAB-page2
+    - TAB-page3
+    description: Show only these drivers
+  expanded_slices: {}
+  color_scheme_domain: []
+version: 1.0.0

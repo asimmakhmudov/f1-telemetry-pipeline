@@ -1,0 +1,228 @@
+{
+  "expectation_suite_name": "staging_CarData",
+  "data_asset_type": null,
+  "meta": {
+    "great_expectations_version": "0.18.19"
+  },
+  "expectations": [
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "SessionKey"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "DriverNumber"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "SampleTime"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "LoadTimestamp"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "LapNumber",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "Speed",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "Rpm",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "Gear",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "Throttle",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "Brake",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "Drs",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "SessionKey",
+        "min_value": 200001011,
+        "max_value": 209912319
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "DriverNumber",
+        "min_value": 1,
+        "max_value": 99
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "LapNumber",
+        "min_value": 1,
+        "max_value": 100
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "Speed",
+        "min_value": 0,
+        "max_value": 380
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "Rpm",
+        "min_value": 0,
+        "max_value": 15500
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "Gear",
+        "min_value": 0,
+        "max_value": 8
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "Throttle",
+        "min_value": 0,
+        "max_value": 100
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "Brake",
+        "min_value": 0,
+        "max_value": 100
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "Drs",
+        "min_value": 0,
+        "max_value": 14
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "Brake",
+        "value_set": [
+          0,
+          100
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "Drs",
+        "value_set": [
+          0,
+          1,
+          2,
+          3,
+          8,
+          9,
+          10,
+          12,
+          14
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_compound_columns_to_be_unique",
+      "kwargs": {
+        "column_list": [
+          "SessionKey",
+          "DriverNumber",
+          "SampleTime"
+        ]
+      },
+      "meta": {}
+    }
+  ]
+}

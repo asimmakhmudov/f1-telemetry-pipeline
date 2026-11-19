@@ -1,0 +1,34 @@
+groups:
+  - name: f1-telemetry-pipeline
+    rules:
+      - alert: DataQualityBelow100
+        expr: pipeline_quality_pass_percent < 100
+        for: 0m
+        labels:
+          severity: critical
+        annotations:
+          summary: "{{ $labels.table }} failed Great Expectations"
+          description: "Only {{ $value }}% of expectations passed; the batch was not loaded."
+
+      - alert: AirflowTaskFailed
+        expr: increase(airflow_ti_failures[1h]) > 0
+        labels:
+          severity: warning
+        annotations:
+          summary: "An Airflow task failed in the last hour"
+
+      - alert: WatermarkStale
+        expr: pipeline_watermark_lag_seconds > 2 * 86400
+        for: 30m
+        labels:
+          severity: warning
+        annotations:
+          summary: "{{ $labels.table }} has not received new rows for over two days"
+
+      - alert: RowCountDrift
+        expr: pipeline_reconciliation_drift_rows != 0
+        labels:
+          severity: warning
+        annotations:
+          summary: "{{ $labels.table }}: source and staging row counts differ by {{ $value }}"
+          description: "Positive means rows were missed; negative means rows were deleted in the source."

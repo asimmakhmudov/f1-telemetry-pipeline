@@ -1,0 +1,244 @@
+{
+  "expectation_suite_name": "staging_Laps",
+  "data_asset_type": null,
+  "meta": {
+    "great_expectations_version": "0.18.19"
+  },
+  "expectations": [
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "SessionKey"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "DriverNumber"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "LapNumber"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "LoadTimestamp"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "LapDuration",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "Sector1Duration",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "Sector2Duration",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "Sector3Duration",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "I1Speed",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "I2Speed",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "SpeedTrap",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "SessionKey",
+        "min_value": 200001011,
+        "max_value": 209912319
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "DriverNumber",
+        "min_value": 1,
+        "max_value": 99
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "LapNumber",
+        "min_value": 1,
+        "max_value": 100
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "LapDuration",
+        "min_value": 40,
+        "max_value": 400
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "Sector1Duration",
+        "min_value": 5,
+        "max_value": 300
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "Sector2Duration",
+        "min_value": 5,
+        "max_value": 300
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "Sector3Duration",
+        "min_value": 5,
+        "max_value": 300
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "I1Speed",
+        "min_value": 40,
+        "max_value": 380
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "I2Speed",
+        "min_value": 40,
+        "max_value": 380
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "SpeedTrap",
+        "min_value": 60,
+        "max_value": 380
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_compound_columns_to_be_unique",
+      "kwargs": {
+        "column_list": [
+          "SessionKey",
+          "DriverNumber",
+          "LapNumber"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_pair_values_a_to_be_greater_than_b",
+      "kwargs": {
+        "column_A": "LapDuration",
+        "column_B": "Sector1Duration",
+        "or_equal": false,
+        "ignore_row_if": "either_value_is_missing"
+      },
+      "meta": {
+        "notes": "A lap is longer than any one of its sectors."
+      }
+    },
+    {
+      "expectation_type": "expect_column_pair_values_a_to_be_greater_than_b",
+      "kwargs": {
+        "column_A": "LapDuration",
+        "column_B": "Sector2Duration",
+        "or_equal": false,
+        "ignore_row_if": "either_value_is_missing"
+      },
+      "meta": {
+        "notes": "A lap is longer than any one of its sectors."
+      }
+    },
+    {
+      "expectation_type": "expect_column_pair_values_a_to_be_greater_than_b",
+      "kwargs": {
+        "column_A": "LapDuration",
+        "column_B": "Sector3Duration",
+        "or_equal": false,
+        "ignore_row_if": "either_value_is_missing"
+      },
+      "meta": {
+        "notes": "A lap is longer than any one of its sectors."
+      }
+    }
+  ]
+}

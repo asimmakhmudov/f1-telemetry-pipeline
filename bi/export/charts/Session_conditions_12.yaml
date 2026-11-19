@@ -1,0 +1,51 @@
+slice_name: Session conditions
+description: null
+certified_by: null
+certification_details: null
+viz_type: table
+params:
+  viz_type: table
+  query_mode: raw
+  all_columns:
+  - SessionDate
+  - MeetingName
+  - SessionName
+  - AvgAirTemperature
+  - AvgTrackTemperature
+  - RainfallMinutes
+  - YellowFlags
+  - SafetyCars
+  order_by_cols:
+  - '["SessionDate", true]'
+  adhoc_filters: []
+  row_limit: 1000
+  server_page_length: 0
+  page_length: null
+  include_search: false
+  show_cell_bars: false
+  table_timestamp_format: '%d %b %Y'
+  column_config:
+    AvgAirTemperature:
+      d3NumberFormat: .1f
+    AvgTrackTemperature:
+      d3NumberFormat: .1f
+    RainfallMinutes:
+      d3NumberFormat: ',d'
+  time_range: No filter
+  datasource: 6__table
+query_context: '{"datasource": {"id": 6, "type": "table"}, "force": false, "queries":
+  [{"columns": ["SessionDate", "MeetingName", "SessionName", "AvgAirTemperature",
+  "AvgTrackTemperature", "RainfallMinutes", "YellowFlags", "SafetyCars"], "orderby":
+  [["SessionDate", true]], "extras": {}, "row_limit": 1000}], "form_data": {"viz_type":
+  "table", "query_mode": "raw", "all_columns": ["SessionDate", "MeetingName", "SessionName",
+  "AvgAirTemperature", "AvgTrackTemperature", "RainfallMinutes", "YellowFlags", "SafetyCars"],
+  "order_by_cols": ["[\"SessionDate\", true]"], "adhoc_filters": [], "row_limit":
+  1000, "server_page_length": 0, "page_length": null, "include_search": false, "show_cell_bars":
+  false, "table_timestamp_format": "%d %b %Y", "column_config": {"AvgAirTemperature":
+  {"d3NumberFormat": ".1f"}, "AvgTrackTemperature": {"d3NumberFormat": ".1f"}, "RainfallMinutes":
+  {"d3NumberFormat": ",d"}}, "time_range": "No filter", "datasource": "6__table"},
+  "result_format": "json", "result_type": "full"}'
+cache_timeout: null
+uuid: cc8a0069-781c-4e00-a430-21eee8f2f424
+version: 1.0.0
+dataset_uuid: 2f528e78-2355-47b4-9e0d-1923599642f3

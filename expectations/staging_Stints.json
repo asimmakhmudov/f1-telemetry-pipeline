@@ -1,0 +1,158 @@
+{
+  "expectation_suite_name": "staging_Stints",
+  "data_asset_type": null,
+  "meta": {
+    "great_expectations_version": "0.18.19"
+  },
+  "expectations": [
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "SessionKey"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "DriverNumber"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "StintNumber"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "LoadTimestamp"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "LapStart",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "LapEnd",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "TyreAgeAtStart",
+        "mostly": 0.9
+      },
+      "meta": {
+        "notes": "Measures may be NULL (unknown), but more than 10% missing in one batch means the source stopped sending this column."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "SessionKey",
+        "min_value": 200001011,
+        "max_value": 209912319
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "DriverNumber",
+        "min_value": 1,
+        "max_value": 99
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "StintNumber",
+        "min_value": 1,
+        "max_value": 10
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "LapStart",
+        "min_value": 1,
+        "max_value": 100
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "LapEnd",
+        "min_value": 1,
+        "max_value": 100
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "TyreAgeAtStart",
+        "min_value": 0,
+        "max_value": 60
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "Compound",
+        "value_set": [
+          "SOFT",
+          "MEDIUM",
+          "HARD",
+          "INTERMEDIATE",
+          "WET"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_compound_columns_to_be_unique",
+      "kwargs": {
+        "column_list": [
+          "SessionKey",
+          "DriverNumber",
+          "StintNumber"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_pair_values_a_to_be_greater_than_b",
+      "kwargs": {
+        "column_A": "LapEnd",
+        "column_B": "LapStart",
+        "or_equal": true,
+        "ignore_row_if": "either_value_is_missing"
+      },
+      "meta": {
+        "notes": "A stint ends on or after the lap it starts."
+      }
+    }
+  ]
+}

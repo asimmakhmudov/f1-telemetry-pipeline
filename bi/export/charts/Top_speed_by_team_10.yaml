@@ -1,0 +1,47 @@
+slice_name: Top speed by team
+description: null
+certified_by: null
+certification_details: null
+viz_type: echarts_timeseries_bar
+params:
+  viz_type: echarts_timeseries_bar
+  x_axis: TeamName
+  metrics:
+  - expressionType: SQL
+    sqlExpression: MAX("TopSpeed")
+    label: Top speed (km/h)
+    hasCustomLabel: true
+  groupby: []
+  adhoc_filters: []
+  row_limit: 1000
+  orientation: horizontal
+  y_axis_format: ',d'
+  show_value: true
+  xAxisLabelRotation: 0
+  show_legend: false
+  legendOrientation: top
+  rich_tooltip: true
+  truncateYAxis: false
+  y_axis_showminmax: false
+  time_range: No filter
+  color_scheme: f1Teams
+  zoomable: false
+  x_axis_sort: Top speed (km/h)
+  x_axis_sort_asc: true
+  datasource: 1__table
+query_context: '{"datasource": {"id": 1, "type": "table"}, "force": false, "queries":
+  [{"columns": ["TeamName"], "metrics": [{"expressionType": "SQL", "sqlExpression":
+  "MAX(\"TopSpeed\")", "label": "Top speed (km/h)", "hasCustomLabel": true}], "extras":
+  {}, "row_limit": 1000}], "form_data": {"viz_type": "echarts_timeseries_bar", "x_axis":
+  "TeamName", "metrics": [{"expressionType": "SQL", "sqlExpression": "MAX(\"TopSpeed\")",
+  "label": "Top speed (km/h)", "hasCustomLabel": true}], "groupby": [], "adhoc_filters":
+  [], "row_limit": 1000, "orientation": "horizontal", "y_axis_format": ",d", "show_value":
+  true, "xAxisLabelRotation": 0, "show_legend": false, "legendOrientation": "top",
+  "rich_tooltip": true, "truncateYAxis": false, "y_axis_showminmax": false, "time_range":
+  "No filter", "color_scheme": "f1Teams", "zoomable": false, "x_axis_sort": "Top speed
+  (km/h)", "x_axis_sort_asc": true, "datasource": "1__table"}, "result_format": "json",
+  "result_type": "full"}'
+cache_timeout: null
+uuid: fa673045-9d27-4309-99ec-06fb1d10ca23
+version: 1.0.0
+dataset_uuid: f2a79bd6-aaed-4c86-a0d2-0f1bf63be8a5

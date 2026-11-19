@@ -1,0 +1,25 @@
+# Local configuration
+.env
+monitoring/secrets/*
+!monitoring/secrets/.gitkeep
+
+# Working files kept off GitHub
+internal/
+CLAUDE.md
+.claude/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.venv/
+
+# Runtime output
+logs/
+spark-warehouse/
+metastore_db/
+derby.log
+
+# macOS
+.DS_Store
